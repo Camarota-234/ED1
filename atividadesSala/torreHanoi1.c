@@ -7,12 +7,4 @@ int base2[3] = {0,0,0};
 int base3[3] = {0,0,0};
 
 
-int main() {
-int origem, destino;
-printf("Base de origem:\n");
-scanf("%d" &origem);
-printf("%d", origem);
-return 0;
-
-}
 

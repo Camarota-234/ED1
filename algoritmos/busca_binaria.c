@@ -35,7 +35,7 @@ int buscaBinaria(int vetor[], int tamanho, int busca)
 
     while (inicio < fim && vetor[meio] != busca)
     {
-       
+                
         if (busca > vetor[meio])
             inicio = meio + 1;
 
@@ -45,10 +45,8 @@ int buscaBinaria(int vetor[], int tamanho, int busca)
         meio = (inicio + fim) / 2;
     }
 
-    if (vetor[meio] == busca)
-        return meio;
-
-    return -1;
+    if (vetor[meio] == busca) {return meio; } 
+    else {return -1; }
 }
 
 
