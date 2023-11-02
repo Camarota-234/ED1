@@ -5,7 +5,7 @@ int main() {
 
     int aux = 0;
     int n = 8;
-    int vetor[] = {1,3,5,2,4,6,7,8};
+    int vetor[] = {2,3,5,1,4,6,7,8};
 
 
     for (int i = 0; i < n - 1 ; i++) {
@@ -23,6 +23,12 @@ int main() {
             }   
         }
     }
+    printf("Vetor ordenado:\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d", vetor[i]);
+    }
 
     for (int i = 0; i < n - 1 ; i++) {
     //for (int i = 0; i <; i++) {
@@ -30,9 +36,8 @@ int main() {
         for (int j = 0; j < n - i - 1; j++) { 
         //for (int j = 0; j < n; j++) {
 
-            if ((vetor[j] % 2) == (j % 2)) {
-            //if ((vetor[j] % 2) != (j % 2)) {
-
+            if ((vetor[j] % 2) != (j % 2)) {
+            
                 aux = vetor[j];
                 vetor[j] = vetor[j+1];
                 vetor[j+1] = aux;
@@ -42,9 +47,9 @@ int main() {
     }
 
 
+printf("\nVetor organizado:\n");
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         printf("%d", vetor[i]);
     }
     
