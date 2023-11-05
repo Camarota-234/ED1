@@ -1,5 +1,10 @@
 # ESTRUTURAS DE DADOS I
 
+**Discente:** João Guilherme Camarota
+**Professor:** Leizer Lima Pinto
+**Ano letivo:** 2023 - 2º Semestre
+
+
 ## Ementa
 Tipos abstratos de dados. Estudo das estruturas de dados, conceitos, operações, representações e manipulação de
 dados estruturados na forma de vetores, matrizes, listas lineares, pilhas, filas, grafos. Estudo da alocação seqüencial
