@@ -48,7 +48,7 @@ int main() {
     }
 
 
-printf("\nVetor organizado:\n");
+printf("\nVetor reorganizado:\n");
 
     for (int i = 0; i < n; i++) {
         printf("%d", vetor[i]);
