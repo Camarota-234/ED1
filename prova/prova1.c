@@ -1,7 +1,7 @@
 #include <stdio.h>
 //Prova 1 questão 3, semestre 2023/2
-//Código pronto e funcional, diferentemente do original.
 //Áreas comentadas são trechos do código da maneira como foi entregue na prova.
+//Mesmo com as alterações código se mostrou ineficaz em alguns casos.
 int main() {
 
     int aux = 0;
@@ -55,4 +55,5 @@ printf("\nVetor reorganizado:\n");
     }
     
     return 0;
+
 }
