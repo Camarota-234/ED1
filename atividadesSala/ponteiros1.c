@@ -6,19 +6,19 @@ typedef struct no {
     struct no * proximo;
 } no;
 
-typedef struct lista {
+typedef struct Lista {
     no * primeiro;
     no * ultimo;
     int quantidade;
-} lista;
+} Lista;
 
-void inicializar(lista * l) {
+void inicializar(Lista * l) {
     l -> quantidade = 0;
     l -> primeiro = NULL;
     l -> ultimo = NULL;
 }
 
-void inserirPrimeiro(lista * l , int valor) {
+void inserirPrimeiro(Lista * l , int valor) {
     no * n = malloc(sizeof(no));
     n -> proximo = l -> primeiro;
     l -> primeiro = n;
@@ -28,7 +28,7 @@ void inserirPrimeiro(lista * l , int valor) {
     }
 }
 
-void inserirUltimo(lista * l, int valor) {
+void inserirUltimo(Lista * l, int valor) {
     no * n = malloc(sizeof(no));
     n -> valor = valor;
     l -> quantidade++;
@@ -42,7 +42,7 @@ void inserirUltimo(lista * l, int valor) {
     }
 }
 
-void inserir(lista * l, int valor, int posicao) {
+void inserir(Lista * l, int valor, int posicao) {
     if (posicao == 0) {
         inserirPrimeiro(l, valor);
     } else if (posicao == l -> quantidade) {
@@ -51,4 +51,10 @@ void inserir(lista * l, int valor, int posicao) {
         no * n = malloc(sizeof(no));
         n -> valor = valor;
     }
+}
+
+int main() {
+    Lista lista1;
+    inicializar(&lista1);
+
 }
