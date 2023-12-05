@@ -1,6 +1,9 @@
 #include <stdio.h>
+#define hello "hello "
+#define world "world"
 
 int main() {
-    printf("Olá Mundo!");
+
+    printf(hello world);
     return 0;
 }

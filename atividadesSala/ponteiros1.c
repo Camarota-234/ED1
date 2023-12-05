@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+// Código passado em sala
+// Ainda não está funcional
 typedef struct no {
     int valor;
     struct no * proximo;
