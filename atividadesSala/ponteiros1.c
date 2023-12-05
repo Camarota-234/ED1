@@ -50,11 +50,19 @@ void inserir(Lista * l, int valor, int posicao) {
     } else {
         no * n = malloc(sizeof(no));
         n -> valor = valor;
+
+        no * aux = l -> primeiro;
+        for(int i = 0; i < posicao - 1; i++) {
+            aux = aux -> proximo;
+        }
+        n -> proximo = aux -> proximo;
+        aux -> proximo = n;
+        l -> quantidade++;
     }
 }
 
 int main() {
     Lista lista1;
     inicializar(&lista1);
-
+    inserir(&lista1, 5, 0);
 }
