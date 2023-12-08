@@ -1,96 +1,177 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 
-typedef struct No{
-
-    int valor;
-    struct No*prox;
-    struct No* ant;
-    
+typedef struct Ficha{
+    int info;
+    struct Ficha *prox;
 }No;
-No * inicio = NULL;
-No * fim = NULL;
-int tam = 0;
 
-void adicionar(int valor, int pos){
+No *inicio, *fim, *aux, *aux2, *novo;
 
-    if(pos>=0 && pos <= tam){
-        No*novo=(No*)malloc(sizeof(No));
-        novo->valor=valor;
+void criar(){
+    inicio=fim=NULL;
+}
+
+void insereinicio(){
+    int valor;
+    printf("Digite o valor: ");
+    scanf("%d",&valor);
+
+    novo = (No*)malloc(sizeof(No));
+    novo -> info=valor;
+    if(inicio==NULL){
+        inicio=fim=novo;
+        fim > inicio;
         novo->prox=NULL;
-        novo->ant=NULL;
-       if(inicio == NULL){ //lista vazia!
-            inicio = novo;
-            fim = novo;}
-            else if(pos==0){ //adionar no inicio
-            novo->prox=inicio;
-            inicio->ant=novo;
-            inicio=novo;
-        }else if(pos==tam){//adicionar no fim
-            fim->prox=novo;
-            novo->ant=fim;
-            fim=novo;
-        }else{ //adicionar no meio
-            No*aux=inicio;
-            int i;
-            for(i=0; i<pos; i++){
-                aux=aux->prox;
-            }
-            novo->prox=aux;
-            novo->ant=aux->ant;
-            aux->ant->prox=novo;
-            aux->ant=novo;
-
-        }
+    }else{
+        novo->prox=inicio;
+        inicio=novo;
+        fim=inicio;
     }
 }
 
-int remover (int pos){
-    int retorno = 1;
-    if(pos>=0 && pos<tam){
-        if(pos==0){ //remover no inicio da estrutura
-            No*lixo=inicio;
-            retorno=inicio->valor;
-            inicio=inicio->prox;
-            inicio->ant=NULL;
-            free(lixo);
-        }else if(pos==tam-1){ //remover no final
-            No*lixo=fim;
-            retorno=lixo->valor;
-            fim->ant->prox=NULL;
-            fim=fim->ant;
-            free(lixo);
-        }else{ //remover no meio
-            No*aux=inicio;
-            int i;
-            for(i=0; i<pos;i++){
-                aux=aux->prox;
-            }
-            retorno=aux->valor;
-            aux->ant->prox=aux->prox;
-            aux->prox->ant=aux->ant;
+void RemoveInicio(){
+    if(inicio!=NULL){
+            aux = inicio;
+            aux2 = fim;
+            inicio = aux -> prox;
+            fim = aux2 -> prox;
+            printf("Eliminando inicio=%d\n",aux -> info);
+            printf("Eliminando fim=%d\n",aux2 -> info);
             free(aux);
-        }
-        tam--;
+            free(aux2);
     }
-    return retorno;
+    else{
+        printf("lista vazia\n");
+    }
 }
 
-void imprimir(){
-    No * aux = inicio;
-    for(int i = 0; i<tam; i++){
-        printf("Valor = %d\n", aux->valor );
+
+void inserirMeio(){
+    int valor, ref,flag = 0;
+
+    printf("Digite a referência:   ");
+    scanf("%d",&ref);
+
+    aux = inicio;
+
+    while (aux->info!=ref && aux!=NULL){
         aux = aux->prox;
     }
-    
+    if(aux->info==ref){
+        flag = 1;
+
+        if(flag == 1){
+            printf("Digite um valor:");
+            scanf("%d",&valor);
+            novo = (No*)malloc(sizeof(No));
+            novo->info=valor;
+
+            novo->prox = aux->prox;
+            aux->prox = novo;
+
+            int aux1;
+
+            printf("Deseja inserir depois ou antes da referência : %d ?\n\n 1- Antes   2- Depois",&ref);
+            scanf("%d",&aux1);
+            do{
+                if(aux1 == 1){
+
+                    int controle;
+                    controle=aux->info;
+                    aux->info=novo->info ;
+                    novo->info = controle;
+                    printf("Ficha inserida!\n\n");
+                    getch();
+                }else if(aux1 == 2){
+                    printf("Ficha inserida!\n\n");
+                    getch();
+                }
+            }while(ref != 1 && ref != 2);
+        }else{
+            printf("Elemento não encontrado");
+        }
+    }
 }
 
-int main(){
+void removeMeio(){
+    int ref,flag = 0;
+    No *aux2;
+    printf("Digite o valor a ser eliminado");
+    scanf("%d",&ref);
+    aux = inicio;
+    while(aux->info !=ref && aux!=fim)
+        aux = aux->prox;
+    if(aux->info==ref)
+        flag=1;
+    if(flag==1){
+        aux2=aux->prox;
+        printf("Eliminando = %d",aux->info);
+        aux->info = aux2->info;
+        printf("passei 1");
+        aux->prox = aux2->prox;
+        printf("passei 2");
+        free(aux2);
+        printf("passei free");
+    }else
+        printf("Valor não encontrado!");
+}
 
+void imprime(){
+    aux = inicio;
+    aux2 = fim;
+    while(aux != NULL){
+        printf("inicio: %d\n",aux -> info);
+        aux = aux -> prox;
+    }
+    while(aux2 != NULL){
+        printf("fim: %d\n",aux2 -> info);
+        aux2 = aux2 -> prox;
+    }
+    getch();
+}
 
-    adicionar(32, 0);
-    adicionar(1,1);
-    imprimir();
+int main() {
+    criar();
+    int op;
+    printf("\n--------------------------------");
+    printf("\n- 1 inserir                    -");
+    printf("\n- 2 imprimir                   -");
+    printf("\n- 3 remover                    -");
+    printf("\n- 4 inserir meio               -");
+    printf("\n- 5 remover meio               -");
+    printf("\n- 6 sair                       -");
+    printf("\n--------------------------------");
+
+    while(op!=4){
+        printf("\n\nDigite o valor do menu: ");
+        scanf("%d",&op);
+
+        printf("\n");
+
+        switch(op){
+            case 1 :
+                insereinicio();
+                break;
+            case 2 :
+                imprime();
+                break;
+            case 3 :
+                RemoveInicio();
+                break;
+            case 4 :
+                inserirMeio();
+                break;
+            case 5 :
+                removeMeio();
+                break;
+            case 6 :
+                system("EXIT");
+                break;
+            default :
+                printf("inserção invalida");
+        }
+    }
     return 0;
 }
