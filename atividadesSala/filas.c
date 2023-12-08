@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct no {
     int valor;
@@ -30,7 +31,7 @@ void inicializar_fila(Fila *f){
 
 }
 
-void enfilerar(Fila *f, int valor) {
+void enfileirar(Fila *f, int valor) {
     No *n = malloc(sizeof(No));
     n->valor = valor;
     n->proximo = NULL;
@@ -44,8 +45,33 @@ void enfilerar(Fila *f, int valor) {
     f->quantidade++;
 }
 
+int desenfileirar(Fila *f) {
+    if (vazia_fila(f)) {
+        return 0;
+    }
+    No* aux = f->primeiro;
+    f->primeiro = aux->proximo;
+
+    if(f->primeiro == NULL) {
+        f->ultimo = NULL;
+    }
+    f->quantidade--;
+    int valor = aux->valor;
+    free(aux);
+    return valor;
+}
+
+
 
 int main() {
     Fila f;
     inicializar_fila(&f);
+    printf("Qtd: %d\n", quantidade_fila(&f));
+    enfileirar(&f, 10);
+    enfileirar(&f, 11);
+    enfileirar(&f, 20);
+    enfileirar(&f, 21);
+    enfileirar(&f, 22);
+    printf("Qtd: %d\n", quantidade_fila(&f));
+
 }
