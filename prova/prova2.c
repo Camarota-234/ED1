@@ -1,5 +1,5 @@
 #include <stdio.h>
 
 int main() {
-    //tendi nada 
+    //tendi nada durante a aula
 }
