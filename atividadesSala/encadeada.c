@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-
+//teste
 typedef struct Ficha{
     int info;
     struct Ficha *prox;
