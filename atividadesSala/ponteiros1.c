@@ -2,6 +2,7 @@
 #include <stdlib.h>
 // Código passado em sala
 // Ainda não está funcional
+// Mas falta pouco
 typedef struct no {
     int valor;
     struct no * proximo;
