@@ -5,4 +5,5 @@ int main() {
     //n entendi d novo
     //acho q não vou aprender
     //so comentando p dar commit
+    //EH FODA
 }
