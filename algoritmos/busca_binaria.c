@@ -13,8 +13,7 @@ void trocar(int *a, int *b)
 // Função de ordenação crescente (bubble sort)
 void ordenarCrescente(int vetor[], int tamanho)
 {
-    for (int i = 0; i < tamanho - 1; i++)
-    {
+    for (int i = 0; i < tamanho - 1; i++)  { 
         for (int j = 0; j < tamanho - i - 1; j++)
         {
             if (vetor[j] > vetor[j + 1])
